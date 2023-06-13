@@ -67,7 +67,7 @@ function HeroSection() {
       </div>
 
       <div className="video-wrap">
-        <video autoPlay="" loop="" muted="" className="custom-video" poster="">
+        <video autoPlay loop muted className="custom-video" poster="">
           <source src="video/pexels-ron-lach-6703360.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -232,7 +232,7 @@ function ContactSection() {
               width="100%"
               height="450"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>

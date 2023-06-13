@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Sports() {
   return (
     <main>
@@ -16,7 +17,7 @@ function AboutSection() {
               <h2 className="text-white mb-4">Escalada</h2>
 
               <p className="text-white">
-                "La escalada fomenta la resiliencia, la determinación y el
+                La escalada fomenta la resiliencia, la determinación y el
                 compañerismo. Al conquistar rutas desafiantes, tu desarrollará
                 tu fortaleza mental y aprenderas a aceptar riesgos calculados.
                 Físicamente, la escalada mejora la fuerza, la flexibilidad y el
@@ -26,7 +27,7 @@ function AboutSection() {
                 meditativo del estrés diario. En última instancia, la escalada
                 cultiva una sensación de logro, confianza en uno mismo y una
                 profunda conexión con la naturaleza, lo que la convierte en una
-                búsqueda holística tanto para el cuerpo como para la mente."
+                búsqueda holística tanto para el cuerpo como para la mente.
               </p>
 
               <h6 className="text-white">
@@ -49,9 +50,10 @@ function AboutSection() {
 
           <div className="col-lg-6 col-12">
             <div className="about-text-wrap">
-              <img
+              <Image
                 src="images/pexels-karolina-grabowska-4498555.jpg"
                 className="about-image img-fluid"
+                alt=""
               />
             </div>
           </div>
@@ -60,9 +62,10 @@ function AboutSection() {
         <div className="row">
           <div className="col-lg-6 col-12">
             <div className="about-text-wrap">
-              <img
+              <Image
                 src="images/pexels-karolina-grabowska-4498555.jpg"
                 className="about-image img-fluid"
+                alt=""
               />
             </div>
           </div>
@@ -71,7 +74,7 @@ function AboutSection() {
               <h2 className="text-white mb-4">Yoga</h2>
 
               <p className="text-white">
-                "La práctica del yoga abarca un rico conjunto de valores que se
+                La práctica del yoga abarca un rico conjunto de valores que se
                 extienden más allá de la aptitud física. Promueve la atención
                 plena, la compasión y la autoconciencia, fomentando una conexión
                 más profunda con uno mismo y con los demás. Físicamente, el yoga
@@ -84,7 +87,7 @@ function AboutSection() {
                 y la autoaceptación, fomentando la estabilidad emocional y la
                 resiliencia. En general, el yoga es una práctica holística que
                 nutre el cuerpo, la mente y el espíritu, ofreciendo un camino
-                hacia la armonía y el bienestar."
+                hacia la armonía y el bienestar.
               </p>
 
               <h6 className="text-white">
@@ -129,9 +132,10 @@ function AboutSection() {
 
           <div className="col-lg-6 col-12">
             <div className="about-text-wrap">
-              <img
+              <Image
                 src="images/pexels-karolina-grabowska-4498555.jpg"
                 className="about-image img-fluid"
+                alt=""
               />
             </div>
           </div>
@@ -140,9 +144,10 @@ function AboutSection() {
         <div className="row">
           <div className="col-lg-6 col-12">
             <div className="about-text-wrap">
-              <img
+              <Image
                 src="images/pexels-karolina-grabowska-4498555.jpg"
                 className="about-image img-fluid"
+                alt=""
               />
             </div>
           </div>
