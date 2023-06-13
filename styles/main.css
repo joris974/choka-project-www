@@ -95,7 +95,6 @@ textarea {
  * Hide visually and from screen readers
  */
 
-.hidden,
 [hidden] {
   display: none !important;
 }
@@ -260,4 +259,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
