@@ -1,4 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
+import logoImg from "../public/logo.png";
+
+import { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -8,7 +18,7 @@ export default function DashboardLayout({
   return (
     <>
       <Header />
-      <NavBar />
+      <Navbar />
       {children}
       <Footer />
     </>
@@ -32,26 +42,137 @@ function Header() {
   );
 }
 
+function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  return (
+    <header className="bg-white">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
+        <div className="flex lg:flex-1">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">Choka Project</span>
+            <Image
+              src={logoImg}
+              alt="Choka Project"
+              className="h-8 w-auto"
+              width={250}
+              height={250}
+            />
+          </Link>
+        </div>
+
+        <div className="flex lg:hidden">
+          <button
+            type="button"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="hidden lg:flex lg:gap-x-12">
+          <Link
+            href="/sports"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Deportes
+          </Link>
+
+          <Link
+            href="/pricing"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Precio
+          </Link>
+          <Link
+            href="/team"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Equipo
+          </Link>
+        </div>
+      </nav>
+
+      <Dialog
+        as="div"
+        className="lg:hidden"
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+      >
+        <div className="fixed inset-0 z-10" />
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Choka Project</span>
+              <Image
+                src={logoImg}
+                alt="Choka Project"
+                className="h-8 w-auto"
+                width={250}
+                height={250}
+              />
+            </Link>
+            <button
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="space-y-2 py-6">
+                <Link
+                  href="/sports"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Desportes
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Precio
+                </Link>
+                <Link
+                  href="/team"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Equipo
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Dialog.Panel>
+      </Dialog>
+    </header>
+  );
+}
+
 function NavBar() {
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+      <nav className="flex items-center justify-between flex-wrap bg-white p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <svg
-            className="fill-current h-8 w-8 mr-2"
-            width="54"
-            height="54"
-            viewBox="0 0 54 54"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
-          <span className="font-semibold text-xl tracking-tight">
-            Choka Project
-          </span>
+          <Link href="/">
+            <Image
+              src={logoImg}
+              alt="Choka Project"
+              width={250}
+              height={250}
+              // blurDataURL="data:..." automatically provided
+              // placeholder="blur" // Optional blur-up while loading
+            />
+          </Link>
         </div>
         <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button className="flex items-center px-3 py-2 border rounded text-oceano border-teal-400 hover:text-white hover:border-white">
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -66,95 +187,22 @@ function NavBar() {
           <div className="text-sm lg:flex-grow">
             <Link
               href="/sports"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
             >
               Deportes
             </Link>
             <Link
               href="/pricing"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
             >
-              Prices
+              Precio
             </Link>
-            <a
-              href="#responsive-header"
-              className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+            <Link
+              href="/team"
+              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
             >
-              Blog
-            </a>
-          </div>
-          <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-            >
-              Download
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      <nav className="navbar navbar-expand-lg">
-        <div className="container">
-          <a className="navbar-brand" href="index.html">
-            Choka Project
-          </a>
-
-          <a
-            href="ticket.html"
-            className="btn custom-btn d-lg-none ms-auto me-4"
-          >
-            Obtener un Pase
-          </a>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav align-items-lg-center ms-auto me-lg-5">
-              <li className="nav-item">
-                <a className="nav-link click-scroll" href="#section_2">
-                  Sobre
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link click-scroll" href="#section_3">
-                  Equipo
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link click-scroll" href="#section_4">
-                  Calendario
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link click-scroll" href="#section_5">
-                  Precio
-                </a>
-              </li>
-
-              <li className="nav-item">
-                <a className="nav-link click-scroll" href="#section_6">
-                  Direcciones
-                </a>
-              </li>
-            </ul>
-
-            <a href="ticket.html" className="btn custom-btn d-lg-block d-none">
-              Obtener un Pase
-            </a>
+              Team
+            </Link>
           </div>
         </div>
       </nav>
