@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "../public/logo.png";
-
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
 import LocaleSwitcher from "./locale-switcher";
 
 export default function DashboardLayout({
