@@ -5,6 +5,7 @@ import logoImg from "../public/logo.png";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import LocaleSwitcher from "./locale-switcher";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -90,6 +91,8 @@ function Navbar() {
           >
             Equipo
           </Link>
+
+          <LocaleSwitcher />
         </div>
       </nav>
 
@@ -142,6 +145,8 @@ function Navbar() {
                 >
                   Equipo
                 </Link>
+
+                <LocaleSwitcher />
               </div>
             </div>
           </div>
