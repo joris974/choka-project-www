@@ -7,7 +7,7 @@ import "../styles/bootstrap-icons.css";
 import "../styles/templatemo-festava-live.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import DashboardLayout from "./layout";
+import DashboardLayout from "../components/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
