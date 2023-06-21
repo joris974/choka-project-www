@@ -78,7 +78,12 @@ function Navbar() {
           >
             Deportes
           </Link>
-
+          <Link
+            href="/restaurant"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Restaurante y escena
+          </Link>
           <Link
             href="/pricing"
             className="text-sm font-semibold leading-6 text-gray-900"
@@ -132,6 +137,12 @@ function Navbar() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Desportes
+                </Link>
+                <Link
+                  href="/restaurant"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Restaurante y escena
                 </Link>
                 <Link
                   href="/pricing"
