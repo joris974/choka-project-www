@@ -22,42 +22,16 @@ function HeroSection() {
       <div className="container d-flex justify-content-center align-items-center">
         <div className="row">
           <div className="col-12 mt-auto mb-5 text-center">
-            <small>ChokaTenerife abrirá en verano de 2023</small>
-            <br />
-            <br />
-            <a className="btn custom-btn smoothscroll" href="#section_2">
-              Aprenda más ahora
-            </a>
-            <br />
-            <br />
-            <ul className="social-icon d-flex align-items-center justify-content-center">
-              <li className="social-icon-item">
-                <a
-                  href="https://www.facebook.com/profile.php?id=100087295354394"
-                  className="social-icon-link"
-                >
-                  <span className="bi-facebook"></span>
-                </a>
-              </li>
-
-              <li className="social-icon-item">
-                <a
-                  href="https://twitter.com/GeoffreyBuchou"
-                  className="social-icon-link"
-                >
-                  <span className="bi-twitter"></span>
-                </a>
-              </li>
-
-              <li className="social-icon-item">
-                <a
-                  href="https://www.instagram.com/chokatenerife"
-                  className="social-icon-link"
-                >
-                  <span className="bi-instagram"></span>
-                </a>
-              </li>
-            </ul>
+            <small>
+              Bienvenido a Choka <br />
+              El primer centro de escalada de Santa cruz <br />
+              Pero no solo eso Aquí reunimos deporte arte y encuentro en un
+              sitio vivo y cálido, <br />
+              Comparte nuestros valores,
+              <br />
+              el intercambio, la eco-responsabilidad y desarrollo físico y
+              mental.
+            </small>
           </div>
 
           <div className="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">
@@ -68,7 +42,7 @@ function HeroSection() {
 
       <div className="video-wrap">
         <video autoPlay loop muted className="custom-video" poster="">
-          <source src="video/pexels-ron-lach-6703360.mp4" type="video/mp4" />
+          <source src="/videos/pexels-ron-lach-6703360.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

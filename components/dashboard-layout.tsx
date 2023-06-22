@@ -8,12 +8,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LocaleSwitcher from "./locale-switcher";
 
 const links = [
-  { name: "Actividades", url: "/sports" },
+  { name: "Escalada", url: "/climbing" },
+  { name: "Bien-estar", url: "/well-being" },
+  { name: "Arte", url: "/art" },
+  { name: "ExtraEscolares", url: "/school" },
+  { name: "Precio", url: "/pricing" },
   { name: "Restaurante & Escena", url: "/restaurant" },
-  { name: "Empresas", url: "/groups" },
+  { name: "Espacio Empresas", url: "/groups" },
   { name: "Blog", url: "/blog" },
   { name: "Calendario", url: "/calendar" },
-  { name: "Precio", url: "/pricing" },
 ];
 
 function MenuLink({ name, url }) {
