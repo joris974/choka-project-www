@@ -7,6 +7,46 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import LocaleSwitcher from "./locale-switcher";
 
+const links = [
+  { name: "Actividades", url: "/sports" },
+  { name: "Restaurante & Escena", url: "/restaurant" },
+  { name: "Empresas", url: "/groups" },
+  { name: "Blog", url: "/blog" },
+  { name: "Calendario", url: "/calendar" },
+  { name: "Precio", url: "/pricing" },
+];
+
+function MenuLink({ name, url }) {
+  return (
+    <Link href={url} className="text-sm font-semibold leading-6 text-gray-900">
+      {name}
+    </Link>
+  );
+}
+
+function MenuLinks() {
+  return links.map(({ name, url }, i) => (
+    <MenuLink key={i} name={name} url={url} />
+  ));
+}
+
+function DrawerMenuLink({ name, url }) {
+  return (
+    <Link
+      href={url}
+      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+    >
+      {name}
+    </Link>
+  );
+}
+
+function DrawerMenuLinks() {
+  return links.map(({ name, url }, i) => (
+    <DrawerMenuLink key={i} name={name} url={url} />
+  ));
+}
+
 export default function DashboardLayout({
   children, // will be a page or nested layout
 }: {
@@ -14,28 +54,10 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <Header />
       <Navbar />
       {children}
       <Footer />
     </>
-  );
-}
-
-function Header() {
-  return (
-    <header className="site-header">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12 col-12 d-flex flex-wrap">
-            <p className="d-flex me-4 mb-0">
-              <i className="bi-person custom-icon me-2"></i>
-              <strong className="text-dark">Abrirá en verano de 2023</strong>
-            </p>
-          </div>
-        </div>
-      </div>
-    </header>
   );
 }
 
@@ -72,30 +94,7 @@ function Navbar() {
         </div>
 
         <div className="hidden lg:flex lg:gap-x-12">
-          <Link
-            href="/sports"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Deportes
-          </Link>
-          <Link
-            href="/restaurant"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Restaurante y escena
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Precio
-          </Link>
-          <Link
-            href="/team"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Equipo
-          </Link>
+          <MenuLinks />
 
           <LocaleSwitcher />
         </div>
@@ -132,31 +131,7 @@ function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Link
-                  href="/sports"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Desportes
-                </Link>
-                <Link
-                  href="/restaurant"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Restaurante y escena
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Precio
-                </Link>
-                <Link
-                  href="/team"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Equipo
-                </Link>
-
+                <DrawerMenuLinks />
                 <LocaleSwitcher />
               </div>
             </div>
@@ -164,61 +139,6 @@ function Navbar() {
         </Dialog.Panel>
       </Dialog>
     </header>
-  );
-}
-
-function NavBar() {
-  return (
-    <>
-      <nav className="flex items-center justify-between flex-wrap bg-white p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <Link href="/">
-            <Image
-              src={logoImg}
-              alt="Choka Project"
-              width={250}
-              height={250}
-              // blurDataURL="data:..." automatically provided
-              // placeholder="blur" // Optional blur-up while loading
-            />
-          </Link>
-        </div>
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-oceano border-teal-400 hover:text-white hover:border-white">
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
-            <Link
-              href="/sports"
-              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
-            >
-              Deportes
-            </Link>
-            <Link
-              href="/pricing"
-              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
-            >
-              Precio
-            </Link>
-            <Link
-              href="/team"
-              className="block lg:inline-block lg:mt-0 text-oceano hover:text-cielo mr-4"
-            >
-              Team
-            </Link>
-          </div>
-        </div>
-      </nav>
-    </>
   );
 }
 
