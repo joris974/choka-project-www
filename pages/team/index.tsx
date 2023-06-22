@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-export-i18n";
 import GeoJpg from "./geo.jpg";
 
 const people = [
@@ -13,7 +12,7 @@ const people = [
 ];
 
 export default function Team() {
-  const { t } = useTranslation("team");
+  const { t } = useTranslation();
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
@@ -55,12 +54,4 @@ export default function Team() {
       </div>
     </div>
   );
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["team"])),
-    },
-  };
 }

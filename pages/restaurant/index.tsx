@@ -1,5 +1,4 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-export-i18n";
 import { H1, H2 } from "../../components/typography";
 
 export default function Restaurant() {
@@ -28,13 +27,4 @@ export default function Restaurant() {
       </div>
     </div>
   );
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["restaurant"])),
-      // Will be passed to the page component as props
-    },
-  };
 }

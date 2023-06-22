@@ -1,9 +1,8 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-export-i18n";
 import { H1, H2 } from "../../components/typography";
 
 export default function Restaurant() {
-  const { t } = useTranslation("groups");
+  const { t } = useTranslation();
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-8 lg:px-8">
@@ -28,12 +27,4 @@ export default function Restaurant() {
       </div>
     </div>
   );
-}
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["groups"])),
-    },
-  };
 }

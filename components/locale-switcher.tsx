@@ -1,33 +1,11 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { LanguageSwitcher, useLanguageQuery } from "next-export-i18n";
 
 export default function LocaleSwitcher() {
-  const router = useRouter();
-  const { locales, locale: activeLocale } = router;
-
-  const otherLocales = (locales || []).filter(
-    (locale) => locale !== activeLocale
-  );
-
+  const [query] = useLanguageQuery();
   return (
     <div>
-      <ul>
-        {otherLocales.map((locale) => {
-          const { pathname, query, asPath } = router;
-          return (
-            <li key={locale}>
-              <Link
-                href={{ pathname, query }}
-                as={asPath}
-                locale={locale}
-                legacyBehavior
-              >
-                {locale}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <LanguageSwitcher lang="en">en</LanguageSwitcher> |{" "}
+      <LanguageSwitcher lang="es">es</LanguageSwitcher>
     </div>
   );
 }
