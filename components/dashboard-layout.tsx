@@ -2,22 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import logoImg from "../public/logo.png";
 import { Fragment, useState } from "react";
+import { useTranslation } from "next-export-i18n";
 import { Dialog, Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import LocaleSwitcher from "./locale-switcher";
 
-const links = [
+const getLinks = (t) => [
   {
-    name: "Escalada",
+    name: t("navbar.climbing.title"),
     href: "/climbing",
     submenus: [
       { name: "Acceso libre", href: "/" },
@@ -103,7 +96,8 @@ function MenuLink({ name, href, submenus }) {
 }
 
 function MenuLinks() {
-  return links.map((props, i) => <MenuLink key={i} {...props} />);
+  const { t } = useTranslation();
+  return getLinks(t).map((props, i) => <MenuLink key={i} {...props} />);
 }
 
 function DrawerMenuLink({ name, href }) {
@@ -118,7 +112,8 @@ function DrawerMenuLink({ name, href }) {
 }
 
 function DrawerMenuLinks() {
-  return links.map((props, i) => <DrawerMenuLink key={i} {...props} />);
+  const { t } = useTranslation();
+  return getLinks(t).map((props, i) => <DrawerMenuLink key={i} {...props} />);
 }
 
 export default function DashboardLayout({

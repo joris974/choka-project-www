@@ -1,6 +1,8 @@
 {
   "myKey": "en translation",
-  "nested": {
-    "key": "nested en translation"
+  "navbar": {
+    "climbing": {
+      "title": "Escalada"
+    }
   }
 }
