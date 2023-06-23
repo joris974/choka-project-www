@@ -1,42 +1,115 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "../public/logo.png";
-import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
+import { Fragment, useState } from "react";
+import { Dialog, Popover, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowPathIcon,
+  Bars3Icon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import LocaleSwitcher from "./locale-switcher";
 
 const links = [
-  { name: "Escalada", url: "/climbing" },
-  { name: "Bien-estar", url: "/well-being" },
-  { name: "Arte", url: "/art" },
-  { name: "ExtraEscolares", url: "/school" },
-  { name: "Precio", url: "/pricing" },
-  { name: "Restaurante & Escena", url: "/restaurant" },
-  { name: "Espacio Empresas", url: "/groups" },
-  { name: "Blog", url: "/blog" },
-  { name: "Calendario", url: "/calendar" },
+  {
+    name: "Escalada",
+    href: "/climbing",
+    submenus: [
+      { name: "Acceso libre", href: "/" },
+      { name: "Primera vez", href: "/" },
+      { name: "Clases", href: "/" },
+      { name: "Niños ", href: "/" },
+      { name: "Grupos", href: "/" },
+      { name: "Precios ", href: "/" },
+      ,
+    ],
+  },
+  {
+    name: "Bien-estar",
+    href: "/well-being",
+    submenus: [
+      { name: "Fit", href: "/" },
+      { name: "Yoga", href: "/" },
+      { name: "Sauna", href: "/" },
+      { name: "Masajes ", href: "/" },
+      { name: "Grupos", href: "/" },
+      { name: "Precios ", href: "/" },
+    ],
+  },
+  { name: "ExtraEscolares", href: "/school", submenus: null },
+  { name: "Restaurante & Escena", href: "/restaurant", submenus: null },
+  { name: "Espacio Empresas", href: "/groups", submenus: null },
+  { name: "Blog", href: "/blog", submenus: null },
+  { name: "Calendario", href: "/calendar", submenus: null },
 ];
 
-function MenuLink({ name, url }) {
+function MenuLink({ name, href, submenus }) {
+  if (submenus) {
+    return (
+      <Popover.Group className="hidden lg:flex lg:gap-x-12">
+        <Popover className="relative">
+          <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            {name}
+            <ChevronDownIcon
+              className="h-5 w-5 flex-none text-gray-400"
+              aria-hidden="true"
+            />
+          </Popover.Button>
+
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-200"
+            enterFrom="opacity-0 translate-y-1"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition ease-in duration-150"
+            leaveFrom="opacity-100 translate-y-0"
+            leaveTo="opacity-0 translate-y-1"
+          >
+            <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-15 overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+              <div className="p-4">
+                {submenus.map((item) => (
+                  <div
+                    key={item.name}
+                    className="group relative flex items-center gap-x-2 rounded-lg p-2 text-sm leading-6 hover:bg-gray-50"
+                  >
+                    <div className="flex-auto">
+                      <a
+                        href={item.href}
+                        className="block font-semibold text-gray-900"
+                      >
+                        {item.name}
+                        <span className="absolute inset-0" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </Popover>
+      </Popover.Group>
+    );
+  }
   return (
-    <Link href={url} className="text-sm font-semibold leading-6 text-gray-900">
+    <Link href={href} className="text-sm font-semibold leading-6 text-gray-900">
       {name}
     </Link>
   );
 }
 
 function MenuLinks() {
-  return links.map(({ name, url }, i) => (
-    <MenuLink key={i} name={name} url={url} />
-  ));
+  return links.map((props, i) => <MenuLink key={i} {...props} />);
 }
 
-function DrawerMenuLink({ name, url }) {
+function DrawerMenuLink({ name, href }) {
   return (
     <Link
-      href={url}
+      href={href}
       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
     >
       {name}
@@ -45,9 +118,7 @@ function DrawerMenuLink({ name, url }) {
 }
 
 function DrawerMenuLinks() {
-  return links.map(({ name, url }, i) => (
-    <DrawerMenuLink key={i} name={name} url={url} />
-  ));
+  return links.map((props, i) => <DrawerMenuLink key={i} {...props} />);
 }
 
 export default function DashboardLayout({
